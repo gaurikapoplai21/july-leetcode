@@ -1,0 +1,32 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) 
+    {
+        if(digits.back()==9)
+        {   
+            vector<int> :: iterator it = digits.end() - 1;
+            while(it >= digits.begin() && *it==9)
+            {
+                *it = 0;
+                it--;
+            }
+            if(digits[0] == 0)
+            {
+                digits.push_back(1);
+                reverse(digits.begin(),digits.end());
+            }
+            else
+            {
+                (*it)++;
+            }
+            
+            
+        }
+        else
+        {
+            digits[digits.size()-1]++;
+        }
+        return digits;
+        
+    }
+};
