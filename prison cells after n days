@@ -1,0 +1,36 @@
+class Solution {
+public:
+    vector<int> prisonAfterNDays(vector<int>& cells, int N) 
+    {   vector<vector<int>> store;
+        if(N==0)
+        {
+            return cells;
+        }
+        vector<int> n(8);
+        n[0] = n[7] = 0;
+        int cycles = 14;
+        while(cycles--)
+        {
+            for(int i=1;i<7;i++)
+            {
+                if(cells[i-1]==cells[i+1])
+                {
+                    n[i] = 1;
+                }
+                else
+                {
+                    n[i] = 0;
+                }
+            }
+            store.push_back(n);
+            cells = n;
+        }
+        N = N%14;
+        if(N==0)
+        {
+            return store.back();
+        }
+        return store[N-1];
+        
+    }
+};
