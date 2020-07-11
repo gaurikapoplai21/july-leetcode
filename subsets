@@ -1,0 +1,25 @@
+class Solution {
+public:
+    vector<vector<int>> subsets(vector<int>& nums) 
+    {
+        vector<vector<int>> v;
+        int ele = pow(2,nums.size());
+        
+        for(int i=0;i<ele;i++)
+        {   vector<int> x;
+            int k = i;
+            int count = 0;
+            while(k)
+            {   count+=1;
+                if(k&1)
+                {  
+                    x.push_back(nums[nums.size()-count]);
+                }
+                
+                k = k>>1;
+            }
+            v.push_back(x);
+        }
+        return v;
+    }
+};
