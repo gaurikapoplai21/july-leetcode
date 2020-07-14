@@ -1,0 +1,61 @@
+class Solution {
+public:
+    double angleClock(int hour, int minutes) 
+    {   int m;
+        int mod = (minutes%5)*6;
+        if(minutes/5==0)
+        {
+            m = 12;
+        }
+        else
+        {
+            m = minutes/5;
+        }
+        int diff = abs(hour-m)*30;
+         double ans;
+        if(diff > 180)
+        {
+            diff = 360 - diff;
+            double deg = minutes/2.0;
+       
+        if(diff==0)
+        {
+            ans = abs(deg - mod);
+        }
+       else if(m > hour)
+       {
+           ans = diff + deg - mod;
+       }
+       else
+       {
+           ans = diff - deg + mod;
+       }
+            
+        }
+        else
+        {
+        double deg = minutes/2.0;
+        //double ans;
+        if(diff==0)
+        {
+            ans = abs(deg - mod);
+        }
+        else if(diff == 180)
+        {
+            ans = diff - abs(deg-mod);
+        }
+       else if(m > hour)
+       {
+           ans = diff - deg + mod;
+       }
+       else 
+       {
+           ans = diff + deg - mod;
+       }
+       
+        }
+     return ans;
+        
+         
+    }
+};
