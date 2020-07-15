@@ -1,0 +1,36 @@
+class Solution:
+    def reverseWords(self, s: str) -> str:
+       l = [] 
+       for i in s.split(" "):
+            l.append(i)
+       ans = ""
+       l = l[::-1]
+       print(l) 
+       #l.remove(" ") 
+       for i in l:
+         if(i != ''):
+            
+                 ans += i
+                 ans += " "
+            
+       
+       ans = ans[:len(ans)-1]   
+       return ans     
+       
+/* class Solution {
+public:
+    string reverseWords(string s) 
+    {
+        stringstream all(s);
+        string word = "";
+        string ans = "";
+        while(all>>word)
+        {
+            ans = word + " " + ans;
+        }
+        return ans.substr(0,ans.size()-1);
+    }
+};*/       
+       
+        
+        
