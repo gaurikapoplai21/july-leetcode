@@ -1,0 +1,17 @@
+class Solution {
+public:
+    uint32_t reverseBits(uint32_t n) 
+    {
+        //reverse bit by bit
+        uint32_t res = 0;
+        int power = 31;
+        while(power>=0)
+        {
+            res += (n&1)<<power; //n&1 gets right most digit and left shifting it to correct power
+            n = n>>1;
+            power--;
+        }
+        return res;
+        
+    }
+};
