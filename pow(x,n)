@@ -1,0 +1,32 @@
+class Solution {
+public:
+    double solve (double x, int n)
+    {
+        if(n==0)
+        {
+            return 1;
+        }
+        double t = myPow(x,n/2);
+        if(n%2)
+        {
+            return x*t*t;
+        }
+        return t*t;
+    }
+    double myPow(double x, int n) 
+    {   double ans;
+        long long int k = n;
+        if(n<0)
+        {
+            x = 1/x;
+            k *= (-1);
+        }
+        
+        ans = solve(x,k);
+        if(ans >= INT_MAX)
+        {
+            return 0;
+        }
+        return ans;
+    }
+};
