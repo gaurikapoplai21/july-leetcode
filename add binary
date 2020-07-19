@@ -1,0 +1,72 @@
+class Solution {
+public:
+    string addBinary(string a, string b) 
+    {
+        int n1 = a.size()-1;
+        int n2 = b.size()-1;
+        string ans;
+        int carry = 0;
+        while(n1>=0 && n2>=0)
+        {   int x; 
+            if(a[n1]=='0' && b[n2]== '0')
+            {
+                x = carry;
+                carry = 0;
+            }
+            else if(a[n1]=='1' && b[n2]=='1')
+            {
+                (carry)>0? x=1 : x=0;
+                carry = 1;
+            }
+            else
+            {
+                (carry>0)? x=0 : x=1;
+                
+                
+            }
+            ans += to_string(x);
+            n1--;
+            n2--;
+            
+        }
+        int y;
+        while(n1>-1)
+        {
+            
+            if(carry && a[n1]=='1')
+            {
+                y = 0;
+                carry = 1;
+            }
+            else
+            {
+                y = (a[n1] - '0') + carry;
+                carry = 0;
+            }
+            ans += to_string(y);
+            n1--;
+        }
+        while(n2 >-1)
+        {
+            if(carry && b[n2]=='1')
+            {
+                y = 0;
+                carry = 1;
+            }
+            else
+            {
+                y = (b[n2] - '0') + carry;
+                carry = 0;
+            }
+            ans += to_string(y);
+            n2--;
+            
+        }
+        if(carry)
+        {
+            ans += '1';
+        }
+        reverse(ans.begin(),ans.end());
+        return ans;
+    }
+};
