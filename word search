@@ -1,0 +1,42 @@
+class Solution {
+public:
+    static bool dfs(vector<vector<char>>& board,int i,int j,string& word,int count)
+    {
+        if(i<0 || i>=board.size() || j<0 || j>=board[0].size() || board[i][j] != word[count])
+        {
+            return false;
+        }
+        char temp = board[i][j];
+        board[i][j] = '$';
+        count++;
+        //cout<<count<<board[i][j]<<" ";
+        if(count == word.size())
+        {
+            return true;
+        }
+        bool ans = dfs(board,i+1,j,word,count) || dfs(board,i-1,j,word,count) ||  dfs(board,i,j-1,word,count) || dfs(board,i,j+1,word,count);
+        
+        board[i][j] = temp;
+        return ans;
+        
+       
+        
+        
+        
+        
+    }
+    bool exist(vector<vector<char>>& board, string word) 
+    {   int count = 0;
+        for(int i=0;i<board.size();i++)
+        {
+            for(int j=0;j<board[0].size();j++)
+            {   
+                if(board[i][j] == word[0] && dfs(board,i,j,word,count)==true)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+};
