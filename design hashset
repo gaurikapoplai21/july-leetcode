@@ -1,0 +1,71 @@
+class MyHashSet {
+public:
+    /** Initialize your data structure here. */
+    vector<int> v;
+    MyHashSet() {
+        
+    }
+    
+    void add(int key) { //O(1)
+        if(find(v.begin(),v.end(),key)==v.end())
+        {
+             v.push_back(key);
+        }
+       
+    }
+    
+    void remove(int key) { //O(1)
+        vector<int> :: iterator it = find(v.begin(),v.end(),key);
+        if(it != v.end())
+        {
+            v.erase(it);
+        }
+    }
+    
+    /** Returns true if this set contains the specified element */
+    bool contains(int key) 
+    { //O(1)
+        if(find(v.begin(),v.end(),key) != v.end())
+        {
+            return true;
+        }
+        return false;
+        
+    }
+};
+// boolean array -> access time O(1)
+class MyHashSet {
+public:
+    /** Initialize your data structure here. */
+    vector<bool> arr;
+    MyHashSet() {
+        vector<bool> t(1000001,false);
+        arr = t;
+    }
+    
+    void add(int key) {
+        
+        arr[key] = true;
+        
+    }
+    
+    void remove(int key) {
+        
+        arr[key] = false;
+        
+    }
+    
+    /** Returns true if this set contains the specified element */
+    bool contains(int key) 
+    {
+        return arr[key];
+    }
+};
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet* obj = new MyHashSet();
+ * obj->add(key);
+ * obj->remove(key);
+ * bool param_3 = obj->contains(key);
+ */
