@@ -1,0 +1,40 @@
+class Solution {
+public:
+    bool isPalindrome(string s) 
+    {
+        string t = "";
+        for(char&c : s)
+        {
+            t += tolower(c);
+        }
+        string :: iterator it1 = t.begin();
+        string :: iterator it2 = t.end() - 1;
+        while(it1 <= it2)
+            
+        {   
+            //cout<<*it1<<*it2;
+            if((isdigit(*it1) || isalpha(*it1)) && (isdigit(*it2) || isalpha(*it2)))
+            {
+               if(*it1 != *it2)
+               {
+                return false;
+               }
+               it1++;
+               it2--;
+            
+            }
+            else if(!isdigit(*it1) && !isalpha(*it1))
+            {
+                it1++;
+            }
+            else if(!isdigit(*it2) && !isalpha(*it2))
+            {
+                it2--;
+            }
+            
+            
+        }
+        return true;
+        
+    }
+};
